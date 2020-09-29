@@ -284,9 +284,29 @@ int main(){
 	printf("\n");
 	for(int x_sudo=1; x_sudo<=set_n; x_sudo++){
 		for(int y_sudo=1; y_sudo<=set_n; y_sudo++){
-			printf("%d ",sudo[x_sudo][y_sudo]);
+			switch(sudo[x_sudo][y_sudo]){
+				case 0:
+					printf("_ ");
+					break;
+				case 1:
+					printf("A ");
+					break;
+				case 2:
+					printf("B ");
+					break;
+				case 3:
+					printf("C ");
+					break;
+				case 4:
+					printf("D ");
+					break;
+				case 5:
+					printf("E ");
+					break;
+				default : 
+					break;
+			}
 		}
 		printf("\n");
 	}
-	printf("%d\n",con_num);
 }

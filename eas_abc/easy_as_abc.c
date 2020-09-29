@@ -3,16 +3,112 @@
 #include <stdlib.h>
 
 int main(){
-	FILE*fp=fopen("inputeasform", "w");
+	FILE*fp=fopen("abc_form", "w");
 
 	int i,n,j,r,s,k;
-	int set_n=10;	
+	int set_n=10; //가로 세로 길이를 정해준다.	
 	printf("here : \n");
 	scanf("%d",&set_n);
+	
 	for(i=1; i<=set_n; i++)
 		for(n=1; n<=set_n; n++)
 			for(j=1; j<=set_n; j++)
 				fprintf(fp,"(declare-const p%d%d%d Bool)\n",i,n,j);
+	char c;
+	int c_i=0; //z3에 입력할 때 문자 대신 들어갈 숫자 ex) A는 1, B는 2 등
+	fprintf(fp,"; E0\n");
+	fprintf(fp,"(assert (and ");
+	for(i=1; i<=4; i++){
+		fprintf(fp,"(and ");
+		for(j=1; j<=set_n; j++){
+			scanf("%c",&c);
+			switch(c){
+				case 'A':
+					c_i =1;
+					break;
+				case 'B':
+					c_i=2;
+					break;
+				case 'C':
+					c_i=3;
+					break;
+				case 'D':
+					c_i=4;
+					break;
+				case 'E':
+					c_i=5;
+					break;
+				case '_':
+					c_i=0;
+					break;
+				default:
+					j--;
+					c_i=0;
+					break;
+			}
+			if(c_i>0){
+				if(i == 1){
+					fprintf(fp,"(or ");
+					for(int a=1; a<set_n-3; a++){
+						fprintf(fp,"(and p%d%d%d ",a,j,c_i);
+						for(int b=1; b<a; b++){
+							for(int c=1; c<6; c++){
+								fprintf(fp,"(not p%d%d%d) ",b,j,c);
+							}
+						}
+						fprintf(fp,")");
+					}
+					fprintf(fp,")");
+				}
+
+				if(i == 2){
+					fprintf(fp,"(or ");
+					for(int a=set_n; a>set_n-3; a--){
+						fprintf(fp,"(and p%d%d%d ",a,j,c_i);
+						for(int b=set_n; b>a; b--){
+							for(int c=1; c<6; c++){
+								fprintf(fp,"(not p%d%d%d) ",b,j,c);
+							}
+						}
+						fprintf(fp,")");
+					}
+					fprintf(fp,")");
+				}
+
+				if(i == 3){
+					fprintf(fp,"(or ");
+					for(int a=1; a<set_n-3; a++){
+						fprintf(fp,"(and p%d%d%d ",j,a,c_i);
+						for(int b=1; b<a; b++){
+							for(int c=1; c<6; c++){
+								fprintf(fp,"(not p%d%d%d) ",j,b,c);
+							}
+						}
+						fprintf(fp,")");
+					}
+					fprintf(fp,")");
+				}
+
+				if(i == 4){
+					fprintf(fp,"(or ");
+					for(int a=set_n; a>set_n-3; a--){
+						fprintf(fp,"(and p%d%d%d ",j,a,c_i);
+						for(int b=set_n; b>a; b--){
+							for(int c=1; c<6; c++){
+								fprintf(fp,"(not p%d%d%d) ",j,b,c);
+							}
+						}
+						fprintf(fp,")");
+					}
+					fprintf(fp,")");
+				}
+
+			}
+		}
+		fprintf(fp,")");
+	}
+	fprintf(fp,"))\n");
+
 	//E1
 	fprintf(fp,"; E1\n");
 	fprintf(fp,"(assert (and ");
@@ -125,7 +221,7 @@ int main(){
 	fprintf(fp,"(check-sat)\n(get-model)\n");
 
 	fclose(fp);
-	FILE*fin= popen("z3 inputeasform", "r");
+	FILE*fin= popen("z3 abc_form", "r");
 	char buf[128];
 	char pnum[128];
 	char num[128]; //strcpy를 위한.
@@ -185,11 +281,32 @@ int main(){
 		} 
 	}
 	pclose(fin);
+	printf("\n");
 	for(int x_sudo=1; x_sudo<=set_n; x_sudo++){
 		for(int y_sudo=1; y_sudo<=set_n; y_sudo++){
-			printf("%d ",sudo[x_sudo][y_sudo]);
+			switch(sudo[x_sudo][y_sudo]){
+				case 0:
+					printf("_ ");
+					break;
+				case 1:
+					printf("A ");
+					break;
+				case 2:
+					printf("B ");
+					break;
+				case 3:
+					printf("C ");
+					break;
+				case 4:
+					printf("D ");
+					break;
+				case 5:
+					printf("E ");
+					break;
+				default : 
+					break;
+			}
 		}
 		printf("\n");
 	}
-	printf("%d\n",con_num);
 }
