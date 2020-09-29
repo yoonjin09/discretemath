@@ -195,6 +195,7 @@ int main(){
 	int confirm=0;
 	int con_num=0;
 	int x_1, y_1,num_1;
+	printf("\n");
 	fscanf(fin,"%s %s", buf, buf);
 	while(!feof(fin)){
 		fscanf(fin, "%s", buf) ;// printf("%s ", buf);
@@ -213,10 +214,9 @@ int main(){
 	pclose(fin);
 	for(int x_sudo=1; x_sudo<10; x_sudo++){
 		for(int y_sudo=1; y_sudo<10; y_sudo++){
-			printf("%d",sudo[x_sudo][y_sudo]);
+			printf("%d ",sudo[x_sudo][y_sudo]);
 		}
 		printf("\n");
 	}
-	printf("%d\n",con_num);
 }
 
