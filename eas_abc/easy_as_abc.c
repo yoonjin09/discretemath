@@ -7,7 +7,6 @@ int main(){
 
 	int i,n,j,r,s,k;
 	int set_n=10; //가로 세로 길이를 정해준다.	
-	printf("here : \n");
 	scanf("%d",&set_n);
 	
 	for(i=1; i<=set_n; i++)
