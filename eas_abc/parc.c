@@ -7,7 +7,6 @@ int main(){
 
 	int i,n,j,r,s,k;
 	int set_n=10; //가로 세로 길이를 정해준다.	
-	printf("here : \n");
 	scanf("%d",&set_n);
 	
 	for(i=1; i<=set_n; i++)
@@ -201,23 +200,7 @@ int main(){
 		fprintf(fp,")");
 	}
 	fprintf(fp,"))\n");
-	/*	
-	//E6
-	fprintf(fp,"; E6\n");
-	fprintf(fp,"(assert (and ");
-	for(i=1; i<=6; i++){
-		fprintf(fp,"(and ");
-		for(j=1; j<=5; j++){
-			fprintf(fp,"(and ");
-			for(n=6; n<=6; n++){
-				fprintf(fp,"(cont p%d%d%d ",i,j,n);
-			}
-			fprintf(fp,")");
-		}
-		fprintf(fp,")");		
-	}
-	fprintf(fp,"))\n");
-	*/
+	
 	fprintf(fp,"(check-sat)\n(get-model)\n");
 
 	fclose(fp);
@@ -272,11 +255,7 @@ int main(){
 			else{
 				x_1=i_num%10;
 			}
-			/*
-			x_1=pnum[1]-'0';
-			y_1=pnum[2]-'0';
-			num_1=pnum[3]-'0';
-			*/
+	
 			sudo[x_1][y_1]=num_1;
 		} 
 	}

@@ -189,7 +189,7 @@ int main(){
 		fprintf(fp,"(and ");
 		for(j=1; j<=set_n; j++){
 			fprintf(fp,"(and ");
-			for(n=1; n<=4; n++){ //맞는 이야기인건가..?
+			for(n=1; n<=4; n++){ 
 				fprintf(fp,"(and ");
 				for(k=n+1; k<=5; k++){
 					fprintf(fp,"(not (and p%d%d%d p%d%d%d))",i,j,n,i,j,k);
@@ -201,23 +201,6 @@ int main(){
 		fprintf(fp,")");
 	}
 	fprintf(fp,"))\n");
-	/*	
-	//E6
-	fprintf(fp,"; E6\n");
-	fprintf(fp,"(assert (and ");
-	for(i=1; i<=6; i++){
-		fprintf(fp,"(and ");
-		for(j=1; j<=5; j++){
-			fprintf(fp,"(and ");
-			for(n=6; n<=6; n++){
-				fprintf(fp,"(cont p%d%d%d ",i,j,n);
-			}
-			fprintf(fp,")");
-		}
-		fprintf(fp,")");		
-	}
-	fprintf(fp,"))\n");
-	*/
 	fprintf(fp,"(check-sat)\n(get-model)\n");
 
 	fclose(fp);
@@ -272,11 +255,6 @@ int main(){
 			else{
 				x_1=i_num%10;
 			}
-			/*
-			x_1=pnum[1]-'0';
-			y_1=pnum[2]-'0';
-			num_1=pnum[3]-'0';
-			*/
 			sudo[x_1][y_1]=num_1;
 		} 
 	}
