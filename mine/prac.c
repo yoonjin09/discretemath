@@ -29,7 +29,7 @@ int main()
     */
     for (int i = 1; i <= length; i++)
         for (int n = 1; n <= length; n++)
-            fprintf(fp, "(declare-const p%d0%d Bool)\n", i, n);
+            fprintf(fp, "(declare-const p%d%d Bool)\n", i, n);
 
     //S0
     fprintf(fp, "; S0\n");
@@ -42,7 +42,7 @@ int main()
             confirm_num = array[x_l][y_l] - '0';
             if (confirm_num >= 0 && confirm_num < 9)
             {
-                fprintf(fp, "(not p%d0%d) ", x_l, y_l);
+                fprintf(fp, "(not p%d%d) ", x_l, y_l);
             }
             else
             {
@@ -127,35 +127,35 @@ int main()
                         {
                         case 1:
                             printf("case 1!!\n");
-                            fprintf(fp, "p%d0%d ", x_l - 1, y_l - 1);
+                            fprintf(fp, "p%d%d ", x_l - 1, y_l - 1);
                             break;
                         case 2:
                             printf("case 2!!\n");
-                            fprintf(fp, "p%d0%d ", x_l - 1, y_l);
+                            fprintf(fp, "p%d%d ", x_l - 1, y_l);
                             break;
                         case 3:
                             printf("case 3!!\n");
-                            fprintf(fp, "p%d0%d ", x_l - 1, y_l + 1);
+                            fprintf(fp, "p%d%d ", x_l - 1, y_l + 1);
                             break;
                         case 4:
                             printf("case 4!!\n");
-                            fprintf(fp, "p%d0%d ", x_l, y_l - 1);
+                            fprintf(fp, "p%d%d ", x_l, y_l - 1);
                             break;
                         case 5:
                             printf("case 5!!\n");
-                            fprintf(fp, "p%d0%d ", x_l, y_l + 1);
+                            fprintf(fp, "p%d%d ", x_l, y_l + 1);
                             break;
                         case 6:
                             printf("case 6!!\n");
-                            fprintf(fp, "p%d0%d ", x_l + 1, y_l - 1);
+                            fprintf(fp, "p%d%d ", x_l + 1, y_l - 1);
                             break;
                         case 7:
                             printf("case 7!!\n");
-                            fprintf(fp, "p%d0%d ", x_l + 1, y_l);
+                            fprintf(fp, "p%d%d ", x_l + 1, y_l);
                             break;
                         case 8:
                             printf("case 8!!\n");
-                            fprintf(fp, "p%d0%d ", x_l + 1, y_l + 1);
+                            fprintf(fp, "p%d%d ", x_l + 1, y_l + 1);
                             break;
                         default:
                             break;
@@ -168,28 +168,28 @@ int main()
                             switch (ia)
                             {
                             case 1:
-                                fprintf(fp, "(not p%d0%d) ", x_l - 1, y_l - 1);
+                                fprintf(fp, "(not p%d%d) ", x_l - 1, y_l - 1);
                                 break;
                             case 2:
-                                fprintf(fp, "(not p%d0%d) ", x_l - 1, y_l);
+                                fprintf(fp, "(not p%d%d) ", x_l - 1, y_l);
                                 break;
                             case 3:
-                                fprintf(fp, "(not p%d0%d)", x_l - 1, y_l + 1);
+                                fprintf(fp, "(not p%d%d)", x_l - 1, y_l + 1);
                                 break;
                             case 4:
-                                fprintf(fp, "(not p%d0%d) ", x_l, y_l - 1);
+                                fprintf(fp, "(not p%d%d) ", x_l, y_l - 1);
                                 break;
                             case 5:
-                                fprintf(fp, "(not p%d0%d) ", x_l, y_l + 1);
+                                fprintf(fp, "(not p%d%d) ", x_l, y_l + 1);
                                 break;
                             case 6:
-                                fprintf(fp, "(not p%d0%d) ", x_l + 1, y_l - 1);
+                                fprintf(fp, "(not p%d%d) ", x_l + 1, y_l - 1);
                                 break;
                             case 7:
-                                fprintf(fp, "(not p%d0%d) ", x_l + 1, y_l);
+                                fprintf(fp, "(not p%d%d) ", x_l + 1, y_l);
                                 break;
                             case 8:
-                                fprintf(fp, "(not p%d0%d) ", x_l + 1, y_l + 1);
+                                fprintf(fp, "(not p%d%d) ", x_l + 1, y_l + 1);
                                 break;
                             default:
                                 break;
@@ -254,27 +254,25 @@ int main()
             strcpy(num, pnum + 1);
             i_num = atoi(num);
 
-            if(i_num < 1000){
-                y_l = i_num%10;
-                x_l = i_num/100;
+            if (i_num % 10 == 0)
+            {
+                y_1 = 10;
+                i_num = i_num / 100;
             }
-            else if(i_num < 10000){
-                if(i_num%100 < 10){
-                    y_l = i_num%100;
-                    x_l = i_num/100;
-                }
-                else
-                {
-                    y_l = i_num%100;
-                    x_l = i_num/1000;
-                }
-                
+            else
+            {
+                y_1 = i_num % 10;
+                i_num = i_num / 10;
             }
-            else {
-                y_l = i_num%100;
-                x_l = i_num/1000;
+
+            if (i_num % 10 == 0)
+            {
+                x_1 = 10;
             }
-            
+            else
+            {
+                x_1 = i_num % 10;
+            }
             mine[x_1][y_1] = 10;
         }
     }
@@ -325,5 +323,20 @@ int main()
         }
         printf("\n");
     }
+    //여기까지는 다시 풀어줘!
+    ////////////////////////////////////////////////////////
+
+    // printf("\n\n");
+    // int num=0;
+    // for(int i=1; i<= length;i++){
+    //     for(int j=1; j<=length; j++){
+    //         num= array[i][j]-'0';
+    //         printf("%d ",num);
+    //     }
+    //     printf("\n");
+    // }
+
+    ////////////////////////////////////////////////////////
     return 0;
 }
+
