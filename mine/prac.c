@@ -141,41 +141,41 @@ int main()
 			for(int ia=1; ia<=8; i++){
 				if(intset_contains(n,ia)==1){	
                         		switch(content){
-                            case 1:
-                                printf("case 1!!\n");
-                                fprintf(fp, "p%d%d ",x_l-1, y_l-1);
-                                break;
-                            case 2:
-                                printf("case 2!!\n");
-                                fprintf(fp, "p%d%d ",x_l-1, y_l);
-                                break;
-                            case 3:
-                                printf("case 3!!\n");
-                                fprintf(fp, "p%d%d ",x_l-1, y_l+1);
-                                break;
-                            case 4:
-                                printf("case 4!!\n");
-                                fprintf(fp, "p%d%d ",x_l, y_l-1);
-                                break;
-                            case 5:
-                                printf("case 5!!\n");
-                                fprintf(fp, "p%d%d ",x_l, y_l+1);
-                                break;
-                            case 6:
-                                printf("case 6!!\n");
-                                fprintf(fp, "p%d%d ",x_l+1, y_l-1);
-                                break;
-                            case 7:
-                                printf("case 7!!\n");
-                                fprintf(fp, "p%d%d ",x_l+1, y_l);
-                                break;
-                            case 8:
-                                printf("case 8!!\n");
-                                fprintf(fp, "p%d%d ",x_l+1, y_l+1);
-                                break;
-                            default:
-                                break;
-                        }
+					    case 1:
+						printf("case 1!!\n");
+						fprintf(fp, "p%d%d ",x_l-1, y_l-1);
+						break;
+					    case 2:
+						printf("case 2!!\n");
+						fprintf(fp, "p%d%d ",x_l-1, y_l);
+						break;
+					    case 3:
+						printf("case 3!!\n");
+						fprintf(fp, "p%d%d ",x_l-1, y_l+1);
+						break;
+					    case 4:
+						printf("case 4!!\n");
+						fprintf(fp, "p%d%d ",x_l, y_l-1);
+						break;
+					    case 5:
+						printf("case 5!!\n");
+						fprintf(fp, "p%d%d ",x_l, y_l+1);
+						break;
+					    case 6:
+						printf("case 6!!\n");
+						fprintf(fp, "p%d%d ",x_l+1, y_l-1);
+						break;
+					    case 7:
+						printf("case 7!!\n");
+						fprintf(fp, "p%d%d ",x_l+1, y_l);
+						break;
+					    case 8:
+						printf("case 8!!\n");
+						fprintf(fp, "p%d%d ",x_l+1, y_l+1);
+						break;
+					    default:
+						break;
+					}
 				}		
 			}
 			free(n);
