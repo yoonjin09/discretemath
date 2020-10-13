@@ -1,0 +1,3 @@
+gcc -c -o intset.o intset.c
+
+gcc -o mine prac.c intset.c -lm

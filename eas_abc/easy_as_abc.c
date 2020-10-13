@@ -220,11 +220,11 @@ int main(){
 	}
 	fscanf(fin,"%s %s", buf, buf);
 	while(!feof(fin)){
-		fscanf(fin, "%s", buf) ; //printf("%s ", buf);
-		fscanf(fin, "%s", pnum) ;// printf("%s ", pnum);
-		fscanf(fin, "%s", buf) ;// printf("%s ", buf);
-		fscanf(fin, "%s", buf) ;// printf("%s ", buf);
-		fscanf(fin, "%s", buf) ;// printf("%s\n", buf);
+		fscanf(fin, "%s", buf) ; printf("%s ", buf);
+		fscanf(fin, "%s", pnum) ; printf("%s ", pnum);
+		fscanf(fin, "%s", buf) ; printf("%s ", buf);
+		fscanf(fin, "%s", buf) ; printf("%s ", buf);
+		fscanf(fin, "%s", buf) ; printf("%s\n", buf);
 		if(confirm == strcmp( buf, tru)){
 			con_num++;
 			strcpy(num,pnum+1);
