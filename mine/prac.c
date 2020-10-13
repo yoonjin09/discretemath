@@ -24,9 +24,6 @@ int main()
             scanf("%s", &array[i][j]);
         }
     }
-    /*
-    queen 했던 것처럼 2개만 선언
-    */
     for (int i = 1; i <= length; i++)
         for (int n = 1; n <= length; n++)
             fprintf(fp, "(declare-const p%d%d Bool)\n", i, n);
@@ -126,35 +123,27 @@ int main()
                         switch (content)
                         {
                         case 1:
-                            printf("case 1!!\n");
                             fprintf(fp, "p%d%d ", x_l - 1, y_l - 1);
                             break;
                         case 2:
-                            printf("case 2!!\n");
                             fprintf(fp, "p%d%d ", x_l - 1, y_l);
                             break;
                         case 3:
-                            printf("case 3!!\n");
                             fprintf(fp, "p%d%d ", x_l - 1, y_l + 1);
                             break;
                         case 4:
-                            printf("case 4!!\n");
                             fprintf(fp, "p%d%d ", x_l, y_l - 1);
                             break;
                         case 5:
-                            printf("case 5!!\n");
                             fprintf(fp, "p%d%d ", x_l, y_l + 1);
                             break;
                         case 6:
-                            printf("case 6!!\n");
                             fprintf(fp, "p%d%d ", x_l + 1, y_l - 1);
                             break;
                         case 7:
-                            printf("case 7!!\n");
                             fprintf(fp, "p%d%d ", x_l + 1, y_l);
                             break;
                         case 8:
-                            printf("case 8!!\n");
                             fprintf(fp, "p%d%d ", x_l + 1, y_l + 1);
                             break;
                         default:
@@ -199,8 +188,6 @@ int main()
 
                     free(n);
                     fprintf(fp, ")\n");
-                    // intset_print(stderr, ps1[i]) ; fprintf(stderr, "\n") ;
-                    // printf("\n");
                     intset_free(ps1[i]);
                 }
                 fprintf(fp, ")\n");
@@ -211,7 +198,6 @@ int main()
         }
     }
     fprintf(fp, "))\n");
-    //////////////////////////////////////////////////////////////////////
     fprintf(fp, "(check-sat)\n(get-model)\n");
 
     fclose(fp);
@@ -323,20 +309,7 @@ int main()
         }
         printf("\n");
     }
-    //여기까지는 다시 풀어줘!
-    ////////////////////////////////////////////////////////
-
-    // printf("\n\n");
-    // int num=0;
-    // for(int i=1; i<= length;i++){
-    //     for(int j=1; j<=length; j++){
-    //         num= array[i][j]-'0';
-    //         printf("%d ",num);
-    //     }
-    //     printf("\n");
-    // }
-
-    ////////////////////////////////////////////////////////
+    
     return 0;
 }
 
