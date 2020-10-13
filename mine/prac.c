@@ -119,7 +119,6 @@ int main()
                         content = ps1[i]->elems[j];
 
                         intset_remove(n, content);
-                        printf("content %d %d: %d\n", i, j, content);
                         switch (content)
                         {
                         case 1:
@@ -226,15 +225,15 @@ int main()
     while (!feof(fin))
     {
         fscanf(fin, "%s", buf);
-        printf("%s ", buf);
+        //printf("%s ", buf);
         fscanf(fin, "%s", pnum);
-        printf("%s ", pnum);
+        //printf("%s ", pnum);
         fscanf(fin, "%s", buf);
-        printf("%s ", buf);
+        //printf("%s ", buf);
         fscanf(fin, "%s", buf);
-        printf("%s ", buf);
+        //printf("%s ", buf);
         fscanf(fin, "%s", buf);
-        printf("%s\n", buf);
+        //printf("%s\n", buf);
         if (confirm == strcmp(buf, tru))
         {
             strcpy(num, pnum + 1);
